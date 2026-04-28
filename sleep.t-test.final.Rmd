@@ -1,0 +1,48 @@
+---
+title: "sleep t-test final"
+author: "Mohamed Mohamed"
+date: "2026-04-28"
+output:
+  pdf_document: default
+  html_document: default
+---
+ DATA 211 – Sleep Tracker Statistical Analysis
+# One-Tailed Independent Samples t-Test
+# H0: No significant difference in sleep between work days and non-work days
+# H1: I sleep significantly fewer hours on work days than on non-work days
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+sleep_data <- data.frame(
+  Date = as.Date(c("2026-04-06","2026-04-07","2026-04-08","2026-04-09",
+                   "2026-04-10","2026-04-11","2026-04-12","2026-04-13",
+                   "2026-04-14","2026-04-15","2026-04-16","2026-04-17",
+                   "2026-04-18","2026-04-19","2026-04-20","2026-04-21",
+                   "2026-04-22","2026-04-23","2026-04-24","2026-04-25",
+                   "2026-04-26")),
+  Day_Type = c("Work Day","Non Work Day","Work Day","Work Day",
+               "Work Day","Non Work Day","Work Day","Work Day",
+               "Non Work Day","Non Work Day","Work Day","Work Day",
+               "Work Day","Work Day","Work Day","Non Work Day",
+               "Non Work Day","Work Day","Work Day","Non Work Day",
+               "Work Day"),
+  Sleep_Hours = c(6.00, 6.00, 9.25, 8.00,
+                  9.00, 6.27, 8.02, 8.00,
+                  8.25, 7.50, 4.50, 7.50,
+                  8.66, 9.00, 8.82, 8.00,
+                  7.00, 8.82, 8.17, 5.15, 9.00)
+)
+
+
+# ---- t-Test ------------------------------------------------
+t.test(Sleep_Hours ~ Day_Type,
+       data        = sleep_data,
+       alternative = "greater")
+
+```
+
